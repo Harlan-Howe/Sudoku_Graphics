@@ -20,9 +20,12 @@ public class GridDemoPanel extends JPanel implements MouseListener, KeyListener
 	{
 		super();
 		resetCells();
+
+		// demo calls to show how markers and live work. Feel free to delete these lines.
 		theGrid[2][2].setMarker("A");
 		theGrid[2][2].setDisplayMarker(true);
 		theGrid[3][3].setIsLive(false);
+		// --------------
 		setBackground(Color.BLACK);
 		addMouseListener(this);
 		//parent.addKeyListener(this); // activate this if you wish to listen to the keyboard. 
@@ -51,8 +54,8 @@ public class GridDemoPanel extends JPanel implements MouseListener, KeyListener
 	
 	/**
 	 * the mouse listener has detected a click, and it has happened on the cell in theGrid at row, col
-	 * @param row
-	 * @param col
+	 * @param row - row of cell
+	 * @param col - column of cell
 	 */
 	public void userClickedCell(int row, int col)
 	{
@@ -67,9 +70,6 @@ public class GridDemoPanel extends JPanel implements MouseListener, KeyListener
 		repaint();
 		
 	}
-	
-	
-	
 	
 	/**
 	 * Here's an example of a simple dialog box with a message.
@@ -133,14 +133,15 @@ public class GridDemoPanel extends JPanel implements MouseListener, KeyListener
 	}
 	//============================ Key Listener Overrides ==========================
 
-	@Override
+
 	/**
-	 * user just pressed and released a key. (May also be triggered by autorepeat, if key is held down?
-	 * @param e
+	 * user just pressed and released a key. (May also be triggered by autorepeat, if key is held down?)
+	 * @param kEvt - key event
 	 */
-	public void keyTyped(KeyEvent e)
+	@Override
+	public void keyTyped(KeyEvent kEvt)
 	{
-		char whichKey = e.getKeyChar();
+		char whichKey = kEvt.getKeyChar();
 		myParent.updateMessage("User just typed \""+whichKey+"\"" );
 		System.out.println(whichKey);
 	}
@@ -148,14 +149,13 @@ public class GridDemoPanel extends JPanel implements MouseListener, KeyListener
 	@Override
 	public void keyPressed(KeyEvent e)
 	{
-		// TODO Auto-generated method stub
-		
+	    // this space intentionally left blank. We need this method, but it doesn't need to _do_ anything.
 	}
 
 	@Override
 	public void keyReleased(KeyEvent e)
 	{
-		// TODO Auto-generated method stub
+		// this space intentionally left blank. We need this method, but it doesn't need to _do_ anything.
 		
 	}
 	// ============================= animation stuff ======================================
@@ -169,7 +169,7 @@ public class GridDemoPanel extends JPanel implements MouseListener, KeyListener
 	}
 	
 	/**
-	 * Modify this method to do what you want to have happen periodically.
+	 * Modify this method to do what you want to happen periodically.
 	 * This method will be called on a regular basis, determined by the delay set in the thread.
 	 * Note: By default, this will NOT get called unless you uncomment the code in the GridDemoFrame's constructor
 	 * that creates a thread.
